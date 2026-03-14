@@ -1,13 +1,13 @@
 <div align="center">
   <h1>
     <img src="assets/nexus_logo.gif" width="96" alt="Nexus Logo" align="center" style="vertical-align: middle;">
-    &nbsp;&nbsp;Nexus&nbsp;&nbsp;<span style="font-size: 0.6em; font-weight: normal; color: #666;">The Autonomous AI Co-Scientist</span>
+    &nbsp;&nbsp;Nexus&nbsp;&nbsp;<span style="font-size: 0.45em; font-weight: normal; color: #666;">—— Next-gen Unified Sub-researcher</span>
   </h1>
 </div>
 <p align="center">
   <em>Accelerating discovery from literature to publication</em>
   <br /><br />
-  <strong>Survey → Ideate → Experiment → Write → Review</strong>
+  <strong>Survey → Brainstorm → Experiment → Write → Review</strong>
   <br /><br />
   <a href="https://github.com/ChunqiGuo02/Nexus/stargazers"><img src="https://img.shields.io/github/stars/ChunqiGuo02/Nexus?style=flat-square&color=blue" alt="Stars"></a>
   <a href="https://github.com/ChunqiGuo02/Nexus/network/members"><img src="https://img.shields.io/github/forks/ChunqiGuo02/Nexus?style=flat-square&color=blue" alt="Forks"></a>
@@ -23,41 +23,58 @@ An **agent skill pack** that turns any LLM coding assistant (Antigravity, Claude
 
 ```mermaid
 flowchart LR
-    Query([💬 User Query])
-    Feishu[[📱 Feishu/Lark<br>Notifications & Approvals]]
+    %% Styles
+    classDef userQuery fill:#f3f4f6,stroke:#9ca3af,stroke-width:2px,stroke-dasharray: 5 5
+    classDef phaseBox fill:#ffffff,stroke:#e5e7eb,stroke-width:2px,rx:10,ry:10
+    classDef node fill:#eff6ff,stroke:#3b82f6,stroke-width:2px,rx:6,ry:6
+    classDef notify fill:#fdf4ff,stroke:#d946ef,stroke-width:2px,rx:6,ry:6,color:#a21caf
 
-    subgraph P1 ["Phase 1: Foundation"]
+    %% Nodes
+    Q(["💬 User Query\n'Graph NNs in Urban Computing'"]):::userQuery
+    
+    subgraph Phase1 ["Phase 1: Foundation"]
         direction TB
-        S["📚 Literature Survey"]
-        V["✅ Citation Verification"]
-        E["📊 Evidence Extraction"]
-        K["🧠 Knowledge Graph"]
-        S --> V --> E --> K
+        L["📚 Literature Survey"]:::node
+        V["✅ Citation Verify"]:::node
+        E["📊 Extract Evidence"]:::node
+        K["🧠 Knowledge Graph"]:::node
+        L --> V --> E --> K
     end
 
-    subgraph P2 ["Phase 2: Ideate & Write"]
+    subgraph Phase2 ["Phase 2: Ideate & Write"]
         direction TB
-        B["💡 Idea Brainstorm"]
-        N["🔍 Novelty Check"]
-        D["📝 Paper Draft"]
-        M["👥 Multi-Reviewer"]
+        B["💡 Brainstorm Ideas"]:::node
+        N["🔍 Novelty Check"]:::node
+        D["📝 Write Draft"]:::node
+        M["👥 Multi-Reviewer"]:::node
         B --> N --> D --> M
     end
 
-    subgraph P3 ["Phase 3: Experiment"]
-        R["🧪 Experiment Runner"]
-        A["📈 Result Analysis"]
+    subgraph Phase3 ["Phase 3: Experiment"]
+        direction TB
+        R["🧪 Run Experiment"]:::node
+        A["📈 Analyze Results"]:::node
         R --> A
     end
 
-    Query --> P1
-    P1 --> P2
-    P2 --> P3
-    P3 -.->|Revise| P2
+    Feishu[["📱 Feishu / Lark\nApprovals & Alerts"]]:::notify
 
-    P1 -.-> Feishu
-    P2 -.-> Feishu
-    P3 -.-> Feishu
+    %% Main Flow
+    Q --> Phase1
+    Phase1 ==> Phase2
+    Phase2 ==> Phase3
+    
+    %% Feedback Loop
+    Phase3 -.->|Revise Draft| Phase2
+
+    %% Notifications
+    Phase1 -.->|Wait for Scope Freeze| Feishu
+    Phase2 -.->|Wait for Idea Approval| Feishu
+    Phase2 -.->|Review Scores| Feishu
+    Phase3 -.->|Experiment Done| Feishu
+
+    %% Apply Phase Styles
+    class Phase1,Phase2,Phase3 phaseBox
 ```
 
 ## 🚀 Quick Start
