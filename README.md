@@ -36,7 +36,8 @@ flowchart TD
         V["✅ Citation Verify"]:::node
         E["📊 Extract Evidence"]:::node
         K["🧠 Knowledge Graph"]:::node
-        S --> V --> E --> K
+        F1[["📱 Wait: Scope Freeze"]]:::notify
+        S --> V --> E --> K -.-> F1
     end
 
     subgraph P2 ["Phase 2: Ideate & Write"]
@@ -45,31 +46,23 @@ flowchart TD
         N["🔍 Novelty Check"]:::node
         D["📝 Write Draft"]:::node
         M["👥 Multi-Reviewer"]:::node
-        B --> N --> D --> M
+        F2[["📱 Wait: Idea Approval"]]:::notify
+        B --> N --> D --> M -.-> F2
     end
 
     subgraph P3 ["Phase 3: Experiment"]
         direction LR
         R["🧪 Run Experiment"]:::node
         A["📈 Analyze Results"]:::node
-        R --> A
+        F3[["📱 Notify: Score & Done"]]:::notify
+        R --> A -.-> F3
     end
-
-    F1[["📱 Wait: Scope Freeze"]]:::notify
-    F2[["📱 Wait: Idea Approval"]]:::notify
-    F3[["📱 Notify: Score & Done"]]:::notify
 
     %% Main vertical flow
     Q --> P1
     P1 ==> P2
     P2 ==> P3
     P3 -.->|Revise Draft| P2
-
-    %% Attach notifications to the right ends of the layers
-    K -.-> F1
-    N -.-> F2
-    M -.-> F3
-    A -.-> F3
 
     class P1,P2,P3 phaseBox
 ```
