@@ -1,7 +1,7 @@
 <div align="center">
   <h1>
     <img src="assets/nexus_logo.gif" width="96" alt="Nexus Logo" align="center" style="vertical-align: middle;">
-    &nbsp;&nbsp;Nexus&nbsp;&nbsp;<span style="font-size: 0.45em; font-weight: normal; color: #666;">—— Next-gen Unified Sub-researcher</span>
+    &nbsp;&nbsp;Nexus&nbsp;&nbsp;<small><sub>Next-gen Unified Sub-researcher</sub></small>
   </h1>
 </div>
 <p align="center">
@@ -24,57 +24,55 @@ An **agent skill pack** that turns any LLM coding assistant (Antigravity, Claude
 ```mermaid
 flowchart LR
     %% Styles
-    classDef userQuery fill:#f3f4f6,stroke:#9ca3af,stroke-width:2px,stroke-dasharray: 5 5
+    classDef mainNode fill:#eff6ff,stroke:#3b82f6,stroke-width:2px,rx:6,ry:6
+    classDef feishu fill:#fdf4ff,stroke:#d946ef,stroke-width:2px,rx:6,ry:6,color:#a21caf
     classDef phaseBox fill:#ffffff,stroke:#e5e7eb,stroke-width:2px,rx:10,ry:10
-    classDef node fill:#eff6ff,stroke:#3b82f6,stroke-width:2px,rx:6,ry:6
-    classDef notify fill:#fdf4ff,stroke:#d946ef,stroke-width:2px,rx:6,ry:6,color:#a21caf
+    classDef query fill:#f3f4f6,stroke:#9ca3af,stroke-width:2px,stroke-dasharray: 4 4
 
-    %% Nodes
-    Q(["💬 User Query\n'Graph NNs in Urban Computing'"]):::userQuery
-    
-    subgraph Phase1 ["Phase 1: Foundation"]
+    Q(["💬 User Query"]):::query
+
+    subgraph P1 ["Phase 1: Foundation"]
         direction TB
-        L["📚 Literature Survey"]:::node
-        V["✅ Citation Verify"]:::node
-        E["📊 Extract Evidence"]:::node
-        K["🧠 Knowledge Graph"]:::node
-        L --> V --> E --> K
+        S["📚 Literature Survey"]:::mainNode
+        V["✅ Citation Verify"]:::mainNode
+        E["📊 Extract Evidence"]:::mainNode
+        K["🧠 Knowledge Graph"]:::mainNode
+        S --> V --> E --> K
     end
 
-    subgraph Phase2 ["Phase 2: Ideate & Write"]
+    subgraph P2 ["Phase 2: Ideate & Write"]
         direction TB
-        B["💡 Brainstorm Ideas"]:::node
-        N["🔍 Novelty Check"]:::node
-        D["📝 Write Draft"]:::node
-        M["👥 Multi-Reviewer"]:::node
+        B["💡 Brainstorm Ideas"]:::mainNode
+        N["🔍 Novelty Check"]:::mainNode
+        D["📝 Write Draft"]:::mainNode
+        M["👥 Multi-Reviewer"]:::mainNode
         B --> N --> D --> M
     end
 
-    subgraph Phase3 ["Phase 3: Experiment"]
+    subgraph P3 ["Phase 3: Experiment"]
         direction TB
-        R["🧪 Run Experiment"]:::node
-        A["📈 Analyze Results"]:::node
+        R["🧪 Run Experiment"]:::mainNode
+        A["📈 Analyze Results"]:::mainNode
         R --> A
     end
 
-    Feishu[["📱 Feishu / Lark\nApprovals & Alerts"]]:::notify
-
-    %% Main Flow
-    Q --> Phase1
-    Phase1 ==> Phase2
-    Phase2 ==> Phase3
-    
-    %% Feedback Loop
-    Phase3 -.->|Revise Draft| Phase2
-
     %% Notifications
-    Phase1 -.->|Wait for Scope Freeze| Feishu
-    Phase2 -.->|Wait for Idea Approval| Feishu
-    Phase2 -.->|Review Scores| Feishu
-    Phase3 -.->|Experiment Done| Feishu
+    F1[["📱 Notification & Approval"]]:::feishu
+    F2[["📱 Notification & Approval"]]:::feishu
+    F3[["📱 Notification & Alerts"]]:::feishu
 
-    %% Apply Phase Styles
-    class Phase1,Phase2,Phase3 phaseBox
+    %% Build the main rigid structure
+    Q --> P1
+    P1 ==> P2
+    P2 ==> P3
+    P3 -.->|Revise Draft| P2
+
+    %% Attach Feishu below each phase to avoid crossing lines messing up the layout
+    P1 -.->|"Scope / Corpus"| F1
+    P2 -.->|"Idea / Score"| F2
+    P3 -.->|"Metrics / Error"| F3
+
+    class P1,P2,P3 phaseBox
 ```
 
 ## 🚀 Quick Start
