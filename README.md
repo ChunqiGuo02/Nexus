@@ -1,11 +1,7 @@
+<h1 align="center">
+  <img src="assets/nexus_logo.gif" width="64" alt="Nexus Logo" align="center"> Nexus
+</h1>
 <p align="center">
-  <a href="https://github.com/ChunqiGuo02/Nexus">
-    <table align="center" border="0" cellspacing="0" cellpadding="0"><tr>
-      <td><img src="assets/nexus_logo.gif" width="64" alt="Nexus Logo"></td>
-      <td><h1>Nexus</h1></td>
-    </tr></table>
-  </a>
-  <br />
   <strong>The Autonomous AI Co-Scientist</strong>
   <br />
   <em>Accelerating discovery from literature to publication</em>
