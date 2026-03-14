@@ -22,35 +22,38 @@ An **agent skill pack** that turns any LLM coding assistant (Antigravity, Claude
 ## ✨ What It Does
 
 ```mermaid
-flowchart TD
+flowchart LR
     %% Styles
-    classDef phaseBox fill:#ffffff,stroke:#e5e7eb,stroke-width:2px,rx:10,ry:10
     classDef node fill:#eff6ff,stroke:#3b82f6,stroke-width:2px,rx:6,ry:6
-    classDef query fill:#f3f4f6,stroke:#9ca3af,stroke-width:2px,stroke-dasharray: 4 4
+    classDef q fill:#f3f4f6,stroke:#9ca3af,stroke-width:2px,stroke-dasharray: 4 4
+    classDef title fill:none,stroke:none,font-weight:bold,font-size:16px
 
-    Q(["💬 User Query"]):::query
+    %% Titles
+    T1[Phase 1: Foundation]:::title
+    T2[Phase 2: Ideate & Write]:::title
+    T3[Phase 3: Experiment]:::title
+
+    %% Nodes
+    Q(["💬 User Query"]):::q
     
-    subgraph P1 ["Phase 1: Foundation"]
-        direction LR
-        S["📚 Literature Survey"]:::node --> V["✅ Citation Verify"]:::node --> E["📊 Extract Evidence"]:::node --> K["🧠 Knowledge Graph\n(📱 Wait: Scope Freeze)"]:::node
-    end
+    S1["📚 Literature Survey\n↓\n✅ Citation Verify"]:::node
+    S2["📊 Extract Evidence\n↓\n🧠 Knowledge Graph\n(📱 Wait: Scope)"]:::node
+    
+    B1["💡 Brainstorm Ideas\n(📱 Wait: Approval)\n↓\n🔍 Novelty Check"]:::node
+    B2["📝 Write Draft\n↓\n👥 Multi-Reviewer\n(📱 Notify: Score)"]:::node
+    
+    E1["🧪 Run Experiment\n↓\n📈 Analyze Results\n(📱 Notify: Done)"]:::node
 
-    subgraph P2 ["Phase 2: Ideate & Write"]
-        direction LR
-        B["💡 Brainstorm Ideas\n(📱 Wait: Idea Approval)"]:::node --> N["🔍 Novelty Check"]:::node --> D["📝 Write Draft"]:::node --> M["👥 Multi-Reviewer\n(📱 Notify: Review Score)"]:::node
-    end
+    %% Layout Structure
+    Q --> S1 --> S2
+    S2 ==> B1
+    B1 --> B2
+    B2 ==>|Revise Draft| E1
 
-    subgraph P3 ["Phase 3: Experiment"]
-        direction LR
-        R["🧪 Run Experiment"]:::node --> A["📈 Analyze Results\n(📱 Notify: Done)"]:::node
-    end
-
-    Q --> P1
-    P1 ==> P2
-    P2 ==> P3
-    P3 -.->|Revise Draft| P2
-
-    class P1,P2,P3 phaseBox
+    %% Invisible alignment
+    T1 ~~~ S1
+    T2 ~~~ B1
+    T3 ~~~ E1
 ```
 
 ## 🚀 Quick Start
