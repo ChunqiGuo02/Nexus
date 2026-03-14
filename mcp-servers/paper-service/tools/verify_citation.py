@@ -23,8 +23,11 @@ GLOBAL_CONFIG_PATH = Path.home() / ".nexus" / "global_config.json"
 
 
 def _load_config() -> dict:
-    if GLOBAL_CONFIG_PATH.exists():
-        return json.loads(GLOBAL_CONFIG_PATH.read_text(encoding="utf-8"))
+    try:
+        if GLOBAL_CONFIG_PATH.exists():
+            return json.loads(GLOBAL_CONFIG_PATH.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        pass
     return {}
 
 

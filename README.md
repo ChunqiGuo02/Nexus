@@ -5,9 +5,9 @@
   </h1>
 </div>
 <p align="center">
-  <em>Accelerating discovery from literature to publication</em>
+  <em>Accelerating discovery from idea to publication</em>
   <br /><br />
-  <strong>Survey → Brainstorm → Experiment → Write → Review</strong>
+  <strong>Idea → Survey → Brainstorm → Experiment → Write → Review</strong>
   <br /><br />
   <a href="https://github.com/ChunqiGuo02/Nexus/stargazers"><img src="https://img.shields.io/github/stars/ChunqiGuo02/Nexus?style=flat-square&color=blue" alt="Stars"></a>
   <a href="https://github.com/ChunqiGuo02/Nexus/network/members"><img src="https://img.shields.io/github/forks/ChunqiGuo02/Nexus?style=flat-square&color=blue" alt="Forks"></a>
@@ -17,42 +17,32 @@
 
 ---
 
-An **agent skill pack** that turns any LLM coding assistant (Antigravity, Claude Code, etc.) into a full-stack academic research partner — from literature survey to paper writing and peer review simulation.
+An **agent skill pack** that turns any LLM coding assistant (Antigravity, Claude Code, etc.) into a full-stack academic research partner — from idea generation to paper writing and peer review simulation.
 
 ## ✨ What It Does
 
 ```mermaid
-flowchart TD
+flowchart LR
     %% Styles
     classDef phaseBox fill:#ffffff,stroke:#e5e7eb,stroke-width:2px,rx:10,ry:10
     classDef node fill:#eff6ff,stroke:#3b82f6,stroke-width:2px,rx:6,ry:6
-    classDef notify fill:#fdf4ff,stroke:#d946ef,stroke-width:2px,rx:6,ry:6,color:#a21caf
+    classDef query fill:#f3f4f6,stroke:#9ca3af,stroke-width:2px,stroke-dasharray: 4 4
 
-    Q(["💬 User Query: 'Graph NNs in Urban Computing'"])
+    Q(["💬 User Query"]):::query
     
     subgraph P1 ["Phase 1: Foundation"]
-        direction TB
-        S["📚 Literature Survey"]:::node
-        V["✅ Citation Verify"]:::node
-        E["📊 Extract Evidence"]:::node
-        K["🧠 Knowledge Graph\n[📱 Wait: Scope Freeze]"]:::node
-        S --> V --> E --> K
+        direction LR
+        S["📚 Literature Survey"]:::node --> V["✅ Citation Verify"]:::node --> E["📊 Extract Evidence"]:::node --> K["🧠 Knowledge Graph\n(📱 Wait: Scope Freeze)"]:::node
     end
 
     subgraph P2 ["Phase 2: Ideate & Write"]
-        direction TB
-        B["💡 Brainstorm Ideas\n[📱 Wait: Idea Approval]"]:::node
-        N["🔍 Novelty Check"]:::node
-        D["📝 Write Draft"]:::node
-        M["👥 Multi-Reviewer\n[📱 Notify: Review Score]"]:::node
-        B --> N --> D --> M
+        direction LR
+        B["💡 Brainstorm Ideas\n(📱 Wait: Idea Approval)"]:::node --> N["🔍 Novelty Check"]:::node --> D["📝 Write Draft"]:::node --> M["👥 Multi-Reviewer\n(📱 Notify: Review Score)"]:::node
     end
 
     subgraph P3 ["Phase 3: Experiment"]
-        direction TB
-        R["🧪 Run Experiment"]:::node
-        A["📈 Analyze Results\n[📱 Notify: Experiment Done]"]:::node
-        R --> A
+        direction LR
+        R["🧪 Run Experiment"]:::node --> A["📈 Analyze Results\n(📱 Notify: Done)"]:::node
     end
 
     Q --> P1

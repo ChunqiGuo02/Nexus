@@ -15,6 +15,7 @@ from __future__ import annotations
 import logging
 import re
 from typing import Any
+from urllib.parse import urljoin
 
 import httpx
 
@@ -76,6 +77,8 @@ async def _fetch_from_scihub_with_verify(
                         pdf_url = match.group(1)
                         if pdf_url.startswith("//"):
                             pdf_url = "https:" + pdf_url
+                        elif not pdf_url.startswith("http"):
+                            pdf_url = urljoin(f"https://{mirror}/", pdf_url)
                         return {
                             "success": True,
                             "pdf_url": pdf_url,
@@ -149,7 +152,10 @@ async def fetch_from_libgen(doi: str) -> dict:
             pattern = r'href=["\']([^"\']*(?:get|download)[^"\']*)'
             match = re.search(pattern, html, re.IGNORECASE)
             if match:
-                return {"success": True, "download_url": match.group(1)}
+                dl_url = match.group(1)
+                if not dl_url.startswith("http"):
+                    dl_url = urljoin(search_url, dl_url)
+                return {"success": True, "download_url": dl_url}
 
     except (httpx.HTTPError, httpx.ConnectError):
         pass

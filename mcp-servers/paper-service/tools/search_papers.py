@@ -116,8 +116,11 @@ def register(mcp_instance: FastMCP) -> None:
         # 解析 year_range
         yr = None
         if year_range and "-" in year_range:
-            parts = year_range.split("-")
-            yr = (int(parts[0]), int(parts[1]))
+            try:
+                parts = year_range.split("-")
+                yr = (int(parts[0].strip()), int(parts[1].strip()))
+            except (ValueError, IndexError):
+                yr = None  # 格式错误时忽略, 不中断搜索
 
         active_sources = sources or [
             "semantic_scholar", "arxiv", "crossref", "openalex"

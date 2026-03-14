@@ -28,13 +28,17 @@ GLOBAL_CONFIG_PATH = Path.home() / ".nexus" / "global_config.json"
 
 
 def _load_config() -> dict:
-    if GLOBAL_CONFIG_PATH.exists():
-        return json.loads(GLOBAL_CONFIG_PATH.read_text(encoding="utf-8"))
-    return {
-        "shadow_library_enabled": True,
+    default = {
+        "shadow_library_enabled": False,
         "shadow_tls_mode": "strict_then_fallback",
         "email": None,
     }
+    try:
+        if GLOBAL_CONFIG_PATH.exists():
+            return {**default, **json.loads(GLOBAL_CONFIG_PATH.read_text(encoding="utf-8"))}
+    except (json.JSONDecodeError, OSError) as e:
+        logger.warning("配置文件读取失败, 使用默认值: %s", e)
+    return default
 
 
 def register(mcp_instance: FastMCP) -> None:
@@ -111,7 +115,8 @@ def register(mcp_instance: FastMCP) -> None:
                 result["errors"].append(f"[Tier2:Unpaywall] {type(e).__name__}: {e}")
                 logger.warning(f"Tier2 Unpaywall 失败: {e}")
 
-            # 2b: OpenAlex
+        # 2b: OpenAlex（不依赖 email）
+        if doi:
             try:
                 oalex = await openalex.get_by_doi(doi, email=email)
                 if oalex:
@@ -185,7 +190,7 @@ def register(mcp_instance: FastMCP) -> None:
 
         # ── Tier 4 & 5: 降级 ──
         try:
-            if doi and email:
+            if doi:
                 oalex = result.get("metadata") or await openalex.get_by_doi(doi, email=email)
                 if oalex and oalex.get("title"):
                     result["metadata"] = oalex

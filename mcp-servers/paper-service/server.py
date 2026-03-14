@@ -27,20 +27,24 @@ GLOBAL_CONFIG_PATH = Path.home() / ".nexus" / "global_config.json"
 
 
 def load_config() -> dict:
-    """加载全局配置，不存在则返回默认值。"""
-    if GLOBAL_CONFIG_PATH.exists():
-        return json.loads(GLOBAL_CONFIG_PATH.read_text(encoding="utf-8"))
-    return {
+    """加载全局配置，不存在或损坏则返回默认值。"""
+    default = {
         "setup_completed": False,
         "email": None,
         "semantic_scholar_key": None,
-        "shadow_library_enabled": True,
+        "shadow_library_enabled": False,
         "shadow_sources": ["sci-hub", "libgen"],
         "shadow_tls_mode": "strict_then_fallback",
         "pdf_parser": "marker",
         "search_sources": ["semantic_scholar", "arxiv", "crossref", "openalex"],
         "max_concurrent_downloads": 3,
     }
+    try:
+        if GLOBAL_CONFIG_PATH.exists():
+            return {**default, **json.loads(GLOBAL_CONFIG_PATH.read_text(encoding="utf-8"))}
+    except (json.JSONDecodeError, OSError):
+        pass  # 配置损坏时静默使用默认值
+    return default
 
 
 def save_config(config: dict) -> None:

@@ -99,12 +99,12 @@ async def get_citations(
             params={"fields": fields, "limit": limit},
             headers=headers,
         )
-        if resp.status_code == 200:
-            result["references"] = [
-                r["citedPaper"]
-                for r in resp.json().get("data", [])
-                if r.get("citedPaper")
-            ]
+        resp.raise_for_status()
+        result["references"] = [
+            r["citedPaper"]
+            for r in resp.json().get("data", [])
+            if r.get("citedPaper")
+        ]
 
     if direction in ("citations", "both"):
         resp = await client.get(
@@ -112,11 +112,11 @@ async def get_citations(
             params={"fields": fields, "limit": limit},
             headers=headers,
         )
-        if resp.status_code == 200:
-            result["citations"] = [
-                r["citingPaper"]
-                for r in resp.json().get("data", [])
-                if r.get("citingPaper")
-            ]
+        resp.raise_for_status()
+        result["citations"] = [
+            r["citingPaper"]
+            for r in resp.json().get("data", [])
+            if r.get("citingPaper")
+        ]
 
     return result

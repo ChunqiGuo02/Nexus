@@ -14,6 +14,7 @@ from fastmcp import FastMCP
 from sources import semantic_scholar
 
 _CONFIG_PATH = Path.home() / ".nexus" / "global_config.json"
+_VALID_DIRECTIONS = {"references", "citations", "both"}
 
 
 def _get_s2_key() -> str | None:
@@ -43,17 +44,32 @@ def register(mcp_instance: FastMCP) -> None:
         Returns:
             {"references": [...], "citations": [...], "total_refs": int, "total_cites": int}
         """
+        if direction not in _VALID_DIRECTIONS:
+            raise ValueError(
+                f"Invalid direction: {direction!r}. "
+                "Expected one of: references, citations, both."
+            )
+
         # 格式化 identifier
         if identifier.startswith("10."):
             identifier = f"DOI:{identifier}"
 
         s2_key = _get_s2_key()
-        data = await semantic_scholar.get_citations(
-            identifier,
-            direction=direction,
-            limit=limit,
-            api_key=s2_key,
-        )
+        try:
+            data = await semantic_scholar.get_citations(
+                identifier,
+                direction=direction,
+                limit=limit,
+                api_key=s2_key,
+            )
+        except Exception as e:
+            return {
+                "error": f"Semantic Scholar API 请求失败: {type(e).__name__}: {e}",
+                "references": [],
+                "citations": [],
+                "total_refs": 0,
+                "total_cites": 0,
+            }
 
         return {
             "references": data.get("references", []),
