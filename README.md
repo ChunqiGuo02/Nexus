@@ -1,7 +1,7 @@
 <div align="center">
   <h1>
     <img src="assets/nexus_logo.gif" width="96" alt="Nexus Logo" align="center" style="vertical-align: middle;">
-    &nbsp;&nbsp;Nexus&nbsp;<small style="color: #666;">The Next-gen Unified Sub-researcher</small>
+    &nbsp;&nbsp;Nexus : &nbsp;<small style="color: #666;">the Next-gen Unified Sub-researcher</small>
   </h1>
 </div>
 <p align="center">
@@ -259,7 +259,8 @@ Paper Writing → Multi-Review → Revision
 
 ### Quick Survey (`/quick-survey`)
 ```
-Search (50 papers) → Filter (Classic + Novel mix) → Brief overview (2-5 minutes)
+Multi-source Search → Smart Filter (citations + recency + novelty) →
+20-30 papers → Brief overview (3-5 minutes)
 ```
 
 ### 🤖 Autopilot Mode
