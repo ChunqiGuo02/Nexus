@@ -23,52 +23,31 @@ An **agent skill pack** that turns any LLM coding assistant (Antigravity, Claude
 
 ```mermaid
 flowchart TD
-    %% Styles
-    classDef phaseBox fill:#ffffff,stroke:#e5e7eb,stroke-width:2px,rx:10,ry:10
-    classDef node fill:#eff6ff,stroke:#3b82f6,stroke-width:2px,rx:6,ry:6
-    classDef notify fill:#fdf4ff,stroke:#d946ef,stroke-width:2px,rx:6,ry:6,color:#a21caf
+    classDef phase fill:#f0f4ff,stroke:#3b82f6,stroke-width:2px,rx:8,ry:8,font-weight:bold
+    classDef step fill:#eff6ff,stroke:#3b82f6,stroke-width:1px,rx:6,ry:6
+    classDef wait fill:#fdf4ff,stroke:#d946ef,stroke-width:2px,rx:6,ry:6,color:#a21caf
 
     Q(["💬 User Query"])
 
-    %% Implicit column anchor to FORCE vertical stacking
-    Q --- P1
-    P1 ~~~ P2
-    P2 ~~~ P3
+    Q --> S
 
-    subgraph P1 ["Phase 1: Foundation"]
-        direction LR
-        S["📚 Literature Survey"]:::node
-        V["✅ Citation Verify"]:::node
-        E["📊 Extract Evidence"]:::node
-        K["🧠 Knowledge Graph"]:::node
-        F1[["📱 Wait: Scope Freeze"]]:::notify
-        S --> V --> E --> K -.-> F1
-    end
+    S["📚 Literature Survey"]:::step
+    S --> V["✅ Citation Verify"]:::step
+    V --> E["📊 Extract Evidence"]:::step
+    E --> K["🧠 Knowledge Graph"]:::step
+    K -.-> W1[["📱 Wait: Scope Freeze"]]:::wait
 
-    subgraph P2 ["Phase 2: Ideate & Write"]
-        direction LR
-        B["💡 Brainstorm Ideas"]:::node
-        N["🔍 Novelty Check"]:::node
-        D["📝 Write Draft"]:::node
-        M["👥 Multi-Reviewer"]:::node
-        F2[["📱 Wait: Idea Approval"]]:::notify
-        B --> N --> D --> M -.-> F2
-    end
+    W1 --> B["💡 Brainstorm Ideas"]:::step
+    B --> N["🔍 Novelty Check"]:::step
+    N --> D["📝 Write Draft"]:::step
+    D --> M["👥 Multi-Reviewer"]:::step
+    M -.-> W2[["📱 Notify: Review Score"]]:::wait
 
-    subgraph P3 ["Phase 3: Experiment"]
-        direction LR
-        R["🧪 Run Experiment"]:::node
-        A["📈 Analyze Results"]:::node
-        F3[["📱 Notify: Score & Done"]]:::notify
-        R --> A -.-> F3
-    end
+    W2 --> R["🧪 Run Experiment"]:::step
+    R --> A["📈 Analyze Results"]:::step
+    A -.-> W3[["📱 Notify: Done"]]:::wait
 
-    %% Actual logic links
-    P1 ==> P2
-    P2 ==> P3
-    P3 -.->|Revise Draft| P2
-
-    class P1,P2,P3 phaseBox
+    A -.->|Revise Draft| D
 ```
 
 ## 🚀 Quick Start
