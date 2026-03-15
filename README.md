@@ -1,9 +1,9 @@
-<table>
+<table border="0" cellspacing="0" cellpadding="20">
 <tr>
-<td width="140" valign="top">
+<td width="140" valign="top" bgcolor="#f6f8fa">
   <img src="assets/nexus_logo.gif" width="120" alt="NeXus Logo">
 </td>
-<td valign="top">
+<td valign="top" bgcolor="#f6f8fa">
 
 # NeXus : *the Next-gen Unified Sub-researcher*
 
