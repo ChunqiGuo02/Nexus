@@ -5,9 +5,9 @@
   </h1>
 </div>
 <p align="center">
-  <em>Accelerating discovery from idea to publication</em>
+  <em>"First to the KEY!"</em>
   <br /><br />
-  <strong>Idea → Survey → Brainstorm → Experiment → Write → Review</strong>
+  <strong>Query → Survey → Brainstorm → Experiment → Write → Review</strong>
   <br /><br />
   <a href="https://github.com/ChunqiGuo02/Nexus/stargazers"><img src="https://img.shields.io/github/stars/ChunqiGuo02/Nexus?style=flat-square&color=blue" alt="Stars"></a>
   <a href="https://github.com/ChunqiGuo02/Nexus/network/members"><img src="https://img.shields.io/github/forks/ChunqiGuo02/Nexus?style=flat-square&color=blue" alt="Forks"></a>
