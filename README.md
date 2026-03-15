@@ -5,7 +5,7 @@
   <a href="https://x.com/Chunqi_Guo"><img src="https://img.shields.io/twitter/follow/Chunqi_Guo?logo=x&logoColor=black&labelColor=eaeaea&color=eaeaea" height="36" alt="Follow on X" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg" height="36" alt="License"></a>
   
-  <br /><br /><strong>Query → Survey → Brainstorm → Experiment → Write → Review</strong><br />
+  <strong>Query → Survey → Brainstorm → Experiment → Write → Review</strong><br />
 </div>
 
 
