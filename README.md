@@ -4,11 +4,12 @@
     &nbsp;&nbsp;NeXus : &nbsp;<em><small style="color: #666;">the Next-gen Unified Sub-researcher</small></em>
   </h1>
 </div>
+<hr style="height: 1px; border: none; border-top: 1px solid #eaeaea; margin: 10px 0;">
 <p align="center">  
-  <a href="https://github.com/abhisheknaiidu/awesome-github-profile-readme/stargazers"><img src="https://img.shields.io/github/stars/abhisheknaiidu/awesome-github-profile-readme?color=3b82f6" height="28" alt="Stars Badge"/></a>
-  <a href="https://github.com/abhisheknaiidu/awesome-github-profile-readme/network/members"><img src="https://img.shields.io/github/forks/abhisheknaiidu/awesome-github-profile-readme?color=8b5cf6" height="28" alt="Forks Badge"/></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg" height="28" alt="License"></a>
-  <a href="https://x.com/Chunqi_Guo" ><img src="https://img.shields.io/twitter/follow/Chunqi_Guo?logo=x&logoColor=black&labelColor=eaeaea&color=eaeaea" height="28" alt="Follow on X" /></a>
+  <a href="https://github.com/abhisheknaiidu/awesome-github-profile-readme/stargazers"><img src="https://img.shields.io/github/stars/abhisheknaiidu/awesome-github-profile-readme?color=3b82f6" height="35" alt="Stars Badge"/></a>
+  <a href="https://github.com/abhisheknaiidu/awesome-github-profile-readme/network/members"><img src="https://img.shields.io/github/forks/abhisheknaiidu/awesome-github-profile-readme?color=8b5cf6" height="35" alt="Forks Badge"/></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg" height="35" alt="License"></a>
+  <a href="https://x.com/Chunqi_Guo" ><img src="https://img.shields.io/twitter/follow/Chunqi_Guo?logo=x&logoColor=black&labelColor=eaeaea&color=eaeaea" height="35" alt="Follow on X" /></a>
  <br />
  <strong>Query → Survey → Brainstorm → Experiment → Write → Review</strong>
 </p>
