@@ -1,8 +1,6 @@
 <div align="center">
-  <h1>
-    <img src="assets/nexus_logo.gif" width="96" alt="Nexus Logo" align="center" style="vertical-align: middle;">
-    &nbsp;&nbsp;Nexus : &nbsp;<small style="color: #666;">the Next-gen Unified Sub-researcher</small>
-  </h1>
+  <img src="assets/nexus_logo.gif" width="96" alt="Nexus Logo" align="center" style="vertical-align: middle;">
+  &nbsp;&nbsp;<span style="font-size: 2.2em; font-weight: bold;">NeXus :</span> &nbsp;<span style="color: #666; font-size: 1.2em; font-weight: bold;">the Next-gen Unified Sub-researcher</span>
 </div>
 <p align="center">
   <em>"First to the KEY!"</em>
@@ -15,9 +13,7 @@
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square" alt="License"></a>
 </p>
 
----
-
-An **agent skill pack** that turns any LLM coding assistant (Antigravity, Claude Code, etc.) into a full-stack academic research partner — from idea generation to paper writing and peer review simulation.
+An **agent skill pack** that turns any LLM coding assistant (Claude Code, Opencode, Antigravity, etc.) into a full-stack academic research partner — from idea generation to paper writing and peer review simulation.
 
 ## ✨ What It Does
 
