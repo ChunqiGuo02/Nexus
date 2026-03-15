@@ -28,21 +28,19 @@ def generate_header_svg():
 
     # ── 画布和 Q*bert 尺寸 ──
     W = 800
-    H = 120
+    H = 150
     gif_w = 56
     gif_h = 68
 
     # ── 标题与跳跃参数 ──
-    title_y = 88
+    title_y = 110
 
-    # 浏览器实测 getBBox() 值：
-    # NeXus: top=48, bottom=97   (x: 175~310)
-    # 副标题: top=69, bottom=93  (x: 326~626)
-    nexus_top = 78   # Q*bert 脚底对齐 NeXus (48+25)
-    sub_top = 86     # Q*bert 脚底对齐副标题 (69+25)
+    # 浏览器实测 getBBox() 值衍生：
+    nexus_top = 100  # Q*bert 脚底对齐 NeXus
+    sub_top = 108    # Q*bert 脚底对齐副标题
     nexus_right_edge = 215  # NeXus+冒号 的右边界
 
-    bottom_y = 150
+    bottom_y = 140
     hop_h = 28
     big_hop_h = 20
 
@@ -155,14 +153,14 @@ def generate_header_svg():
      viewBox="0 0 {W} {H}"
      role="img" aria-label="NeXus : the Next-gen Unified Sub-researcher">
 
-  <!-- 标题 -->
+  <!-- 标题 (放在最前面，位于底层) -->
   <text x="{text_x}" y="{title_y}" text-anchor="middle">
     <tspan font-family="Cambria, Georgia, serif" font-weight="700" font-size="42" fill="#1a1a2e" letter-spacing="3">NeXus</tspan>
     <tspan font-family="Cambria, Georgia, serif" font-weight="400" font-size="26" fill="#aaa"> : </tspan>
     <tspan font-family="Cambria, Georgia, serif" font-style="italic" font-weight="500" font-size="30" fill="#555">the Next-gen Unified Sub-researcher</tspan>
   </text>
 
-  <!-- Q*bert 面朝左 -->
+  <!-- Q*bert 面朝左 (位于标题上方) -->
   <g>
     <animate attributeName="opacity"
       values="1;1;0;0;0"
