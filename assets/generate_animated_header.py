@@ -49,7 +49,7 @@ def generate_header_svg():
     # 水平范围
     right_x = 580
     left_x = 140
-    bottom_x = 150
+    bottom_x = 100
     n_hops = 10
     hop_w = (right_x - left_x) / n_hops
 
