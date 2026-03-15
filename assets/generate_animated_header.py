@@ -159,7 +159,7 @@ def generate_header_svg():
   <text x="{text_x}" y="{title_y}" text-anchor="middle">
     <tspan font-family="Cambria, Georgia, serif" font-weight="700" font-size="42" fill="#1a1a2e" letter-spacing="3">NeXus</tspan>
     <tspan font-family="Cambria, Georgia, serif" font-weight="400" font-size="26" fill="#aaa"> : </tspan>
-    <tspan font-family="Cambria, Georgia, serif" font-style="italic" font-weight="500" font-size="20" fill="#555">the Next-gen Unified Sub-researcher</tspan>
+    <tspan font-family="Cambria, Georgia, serif" font-style="italic" font-weight="500" font-size="26" fill="#555">the Next-gen Unified Sub-researcher</tspan>
   </text>
 
   <!-- Q*bert 面朝左 -->
