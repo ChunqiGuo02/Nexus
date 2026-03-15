@@ -33,9 +33,9 @@ flowchart TD
     
     P1["📚 Phase 1: Discovery<br>━━━━━━━━━━━━━<br>🔍 Literature Survey<br>✅ Citation Verify<br>📑 Extract Evidence<br>🧠 Knowledge Graph"]:::phase1
     
-    P2["💡 Phase 2: Ideation & Draft<br>━━━━━━━━━━━━━<br>🎯 Brainstorm Ideas<br>🛡️ Novelty Check<br>📝 Dual-Model Draft"]:::phase2
+    P2["💡 Phase 2: Ideat2Draft<br>━━━━━━━━━━━━━<br>🎯 Brainstorm Ideas<br>👾 Novelty Check<br>📝 Dual-Model Draft"]:::phase2
     
-    P3["🧪 Phase 3: Validation<br>━━━━━━━━━━━━━<br>💻 AutoDL / SSH<br>⚙️ Run Experiments<br>📊 Analyze Results"]:::phase3
+    P3["🧪 Phase 3: Validation<br>━━━━━━━━━━━━━<br>💻 Local / SSH<br>⚙️ Run Experiments<br>📊 Analyze Results"]:::phase3
 
     P4["👥 Phase 4: Peer Review<br>━━━━━━━━━━━━━<br>👹 Strict (Claude Opus)<br>✨ Creative (Gemini Pro)<br>📖 Reader (GPT 5.4)<br>⚖️ Meta (Decision)"]:::phase4
 
@@ -44,7 +44,7 @@ flowchart TD
     P2 -->|"Spawns"| P3
     P3 -->|"Figures"| P2
     P2 -->|"Submit Draft"| P4
-    P4 -.->|"Revision Roadmap"| P2
+    P4 -.->|"Review Feedback"| P2
 ```
 
 ## 🚀 Quick Start
