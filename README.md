@@ -1,17 +1,15 @@
-<div align="center">
-  <img src="assets/nexus_logo.gif" width="120" alt="NeXus Logo" style="vertical-align: middle; margin-right: 15px;">
-  <div style="display: inline-block; vertical-align: middle; text-align: right;">
-    <h2 style="border-bottom: none; margin: 0; padding: 0;">NeXus : <em><small style="color: #666;">the Next-gen Unified Sub-researcher</small></em></h2>
-    <div style="margin-top: 8px;">
-      <a href="https://github.com/ChunqiGuo02/NeXus/stargazers"><img src="https://img.shields.io/github/stars/ChunqiGuo02/NeXus?color=3b82f6" height="28" alt="Stars Badge"/></a>
-      <a href="https://github.com/ChunqiGuo02/NeXus/network/members"><img src="https://img.shields.io/github/forks/ChunqiGuo02/NeXus?color=8b5cf6" height="28" alt="Forks Badge"/></a>
-      <a href="https://x.com/Chunqi_Guo"><img src="https://img.shields.io/twitter/follow/Chunqi_Guo?logo=x&logoColor=black&labelColor=eaeaea&color=eaeaea" height="28" alt="Follow on X" /></a>
-      <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg" height="28" alt="License"></a>
-    </div>
-    <div style="margin-top: 8px;">
-      <strong>Query → Survey → Brainstorm → Experiment → Write → Review</strong>
-    </div>
-  </div>
+<p align="right">
+  <img src="assets/nexus_logo.gif" width="120" alt="NeXus Logo" style="vertical-align: middle;" />
+  <img src="assets/nexus_title.svg" width="860" alt="NeXus : the Next-gen Unified Sub-researcher" style="vertical-align: middle;" />
+</p>
+
+<div align="right">
+  <a href="https://github.com/ChunqiGuo02/NeXus/stargazers"><img src="https://img.shields.io/github/stars/ChunqiGuo02/NeXus?color=3b82f6" height="28" alt="Stars Badge"/></a>
+  <a href="https://github.com/ChunqiGuo02/NeXus/network/members"><img src="https://img.shields.io/github/forks/ChunqiGuo02/NeXus?color=8b5cf6" height="28" alt="Forks Badge"/></a>
+  <a href="https://x.com/Chunqi_Guo"><img src="https://img.shields.io/twitter/follow/Chunqi_Guo?logo=x&logoColor=black&labelColor=eaeaea&color=eaeaea" height="28" alt="Follow on X" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg" height="28" alt="License"></a>
+  <br />
+  <strong>Query → Survey → Brainstorm → Experiment → Write → Review</strong>
 </div>
 
 <br clear="both" />
