@@ -5,13 +5,11 @@
   </h1>
 </div>
 <p align="center">
-  <em>"First to the KEY!"</em>
-  <br /><br />
   <strong>Query → Survey → Brainstorm → Experiment → Write → Review</strong>
-  <br /><br />
-  <a href="https://github.com/ChunqiGuo02/NeXus/stargazers"><img src="https://img.shields.io/github/stars/ChunqiGuo02/NeXus?style=flat-square&color=blue" alt="Stars"></a>
-  <a href="https://github.com/ChunqiGuo02/NeXus/network/members"><img src="https://img.shields.io/github/forks/ChunqiGuo02/NeXus?style=flat-square&color=blue" alt="Forks"></a>
-  <a href="https://github.com/ChunqiGuo02/NeXus/issues"><img src="https://img.shields.io/github/issues/ChunqiGuo02/NeXus?style=flat-square&color=blue" alt="Issues"></a>
+  <br /> <em>"First to the KEY!"</em><br />
+  <a href="https://github.com/ChunqiGuo02/NeXus/stargazers"><img src="https://img.shields.io/github/stars/ChunqiGuo02/NeXus?style=flat-square&color=purple" alt="Stars"></a>
+  <a href="https://github.com/ChunqiGuo02/NeXus/network/members"><img src="https://img.shields.io/github/forks/ChunqiGuo02/NeXus?style=flat-square&color=purple" alt="Forks"></a>
+  <a href="https://github.com/ChunqiGuo02/NeXus/issues"><img src="https://img.shields.io/github/issues/ChunqiGuo02/NeXus?style=flat-square&color=purple" alt="Issues"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square" alt="License"></a>
 </p>
 
