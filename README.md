@@ -1,6 +1,8 @@
 <img src="assets/nexus_logo.gif" width="120" alt="NeXus Logo" align="left" style="margin-right: 20px;">
 
-<p align="right" style="font-size: 74px; margin: 0;"><strong>NeXus : <em>the Next-gen Unified Sub-researcher</em></strong></p>
+<p align="right">
+  <img src="assets/nexus_title.svg" width="980" alt="NeXus : the Next-gen Unified Sub-researcher" />
+</p>
 
 <div align="right">
   <a href="https://github.com/ChunqiGuo02/NeXus/stargazers"><img src="https://img.shields.io/github/stars/ChunqiGuo02/NeXus?color=3b82f6" height="28" alt="Stars Badge"/></a>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2200 160" role="img" aria-label="NeXus : the Next-gen Unified Sub-researcher">
+  <text
+    x="2180"
+    y="112"
+    text-anchor="end"
+    font-family="Segoe UI, Arial, sans-serif"
+    font-size="84"
+    font-weight="700"
+    fill="#0f172a"
+  >
+    <tspan>NeXus : </tspan>
+    <tspan font-style="italic">the Next-gen Unified Sub-researcher</tspan>
+  </text>
+</svg>
