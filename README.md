@@ -6,12 +6,12 @@
 </div>
 <p align="center">
   <strong>Query → Survey → Brainstorm → Experiment → Write → Review</strong>
-  <br /> <em>"First to the KEY!"</em><br />
-  <a href="https://github.com/ChunqiGuo02/NeXus/stargazers"><img src="https://img.shields.io/github/stars/ChunqiGuo02/NeXus?style=flat-square&color=purple" alt="Stars"></a>
-  <a href="https://github.com/ChunqiGuo02/NeXus/network/members"><img src="https://img.shields.io/github/forks/ChunqiGuo02/NeXus?style=flat-square&color=purple" alt="Forks"></a>
-  <a href="https://github.com/ChunqiGuo02/NeXus/issues"><img src="https://img.shields.io/github/issues/ChunqiGuo02/NeXus?style=flat-square&color=purple" alt="Issues"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square" alt="License"></a>
-  <a href="https://x.com/Chunqi_Guo" ><img src="https://img.shields.io/twitter/follow/Chunqi_Guo?style=flat-square&logo=x&logoColor=black&labelColor=lightgray&color=lightgray" alt="Follow on X" /></a>
+  <br />
+  <a href="https://github.com/ChunqiGuo02/NeXus/stargazers"><img src="https://img.shields.io/github/stars/ChunqiGuo02/NeXus?style=for-the-badge&color=purple" alt="Stars"></a>
+  <a href="https://github.com/ChunqiGuo02/NeXus/network/members"><img src="https://img.shields.io/github/forks/ChunqiGuo02/NeXus?style=for-the-badge&color=purple" alt="Forks"></a>
+  <a href="https://github.com/ChunqiGuo02/NeXus/issues"><img src="https://img.shields.io/github/issues/ChunqiGuo02/NeXus?style=for-the-badge&color=purple" alt="Issues"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge" alt="License"></a>
+  <a href="https://x.com/Chunqi_Guo" ><img src="https://img.shields.io/twitter/follow/Chunqi_Guo?style=for-the-badge&logo=x&logoColor=black&labelColor=eaeaea&color=eaeaea" alt="Follow on X" /></a>
 </p>
 
 An **agent skill pack** that turns any LLM coding assistant (Claude Code, Opencode, Antigravity, etc.) into a full-stack academic research partner — from idea generation to paper writing and peer review simulation.
