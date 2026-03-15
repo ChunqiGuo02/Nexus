@@ -1,13 +1,7 @@
-<table>
-  <tr>
-    <td width="140" valign="middle">
-      <img src="assets/nexus_logo.gif" width="120" alt="NeXus Logo" />
-    </td>
-    <td align="right" valign="middle">
-      <img src="assets/nexus_title.svg" width="900" alt="NeXus : the Next-gen Unified Sub-researcher" />
-    </td>
-  </tr>
-</table>
+<p align="right">
+  <img src="assets/nexus_logo.gif" width="120" alt="NeXus Logo" align="left" />
+  <img src="assets/nexus_title.svg" width="980" alt="NeXus : the Next-gen Unified Sub-researcher" />
+</p>
 
 <div align="right">
   <a href="https://github.com/ChunqiGuo02/NeXus/stargazers"><img src="https://img.shields.io/github/stars/ChunqiGuo02/NeXus?color=3b82f6" height="28" alt="Stars Badge"/></a>
@@ -17,6 +11,8 @@
   <br />
   <strong>Query → Survey → Brainstorm → Experiment → Write → Review</strong>
 </div>
+
+<br clear="both" />
 
 
 
