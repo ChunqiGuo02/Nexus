@@ -10,7 +10,9 @@
 
 
 
-An **agent skill pack** that turns any LLM coding assistant (Claude Code, Opencode, Antigravity, etc.) into a full-stack academic research partner — from idea generation to paper writing and peer review simulation.
+An **agent skill pack** that turns any LLM coding assistant (Antigravity, Claude Code, Opencode, etc.) into a full-stack academic research partner — from literature survey to top-venue paper submission.
+
+> **Not a toy demo.** NeXus ships with 5 quality gates (QG1–QG5), 5 hard checkpoints that Autopilot cannot bypass, 12 layers of anti-mediocrity mechanisms, and full `publishable` evidence traceability from data fetching to final manuscript.
 
 ## ✨ What It Does
 
@@ -26,11 +28,11 @@ flowchart TD
     
     P1["📚 Phase 1: Discovery<br>━━━━━━━━━━━━━<br>🔍 Literature Survey<br>✅ Citation Verify<br>📑 Extract Evidence<br>🧠 Knowledge Graph"]:::phase1
     
-    P2["💡 Phase 2: Idea2Draft<br>━━━━━━━━━━━━━<br>👾 Brainstorm Ideas<br>🎯 Novelty Check<br>📝 Dual-Model Draft"]:::phase2
+    P2["💡 Phase 2: Idea→Draft<br>━━━━━━━━━━━━━<br>👾 ToT Brainstorm + Elo<br>🎯 SDP Red Team (QG2)<br>🔬 Novelty Check<br>📝 Dual-Model Draft"]:::phase2
     
-    P3["🧪 Phase 3: Validation<br>━━━━━━━━━━━━━<br>💻 Local / SSH<br>⚙️ Run Experiments<br>📊 Analyze Results"]:::phase3
+    P3["🧪 Phase 3: Validation<br>━━━━━━━━━━━━━<br>🏗️ SDP Arch Review<br>💻 Type A/B/C Experiments<br>📊 Multi-Seed Statistics<br>⚡ 3-Strike Circuit Breaker"]:::phase3
 
-    P4["👥 Phase 4: Peer Review<br>━━━━━━━━━━━━━<br>👹 Strict (Claude Opus)<br>✨ Creative (Gemini Pro)<br>📖 Reader (GPT 5.4)<br>⚖️ Meta (Decision)"]:::phase4
+    P4["👥 Phase 4: Peer Review<br>━━━━━━━━━━━━━<br>📄 Rejection Letter Drill<br>👹×6 Cross-Model Review<br>⚖️ Consensus Analysis<br>🔄 Revise (≤2 rounds)"]:::phase4
 
     U --> P1
     P1 --> P2
@@ -39,6 +41,46 @@ flowchart TD
     P2 -->|"Submit Draft"| P4
     P4 -.->|"Review Feedback"| P2
 ```
+
+## 🛡️ Anti-Mediocrity: 12 Layers of Defense
+
+> Every layer exists to prevent the agent from producing incremental, lack-of-novelty, or unprofessional output.
+
+<details>
+<summary><strong>🔴 Anti-Incremental (5 layers)</strong></summary>
+
+| Layer | Mechanism | Stage |
+|-------|-----------|-------|
+| 1 | **Forced Cross-Pollination**: inject 3-5 cross-domain SOTA papers | Survey |
+| 2 | **3-4-3 Portfolio Ideation**: 30% Safe / 40% Ambitious / 30% Paradigm Shift | Ideate |
+| 3 | **SDP Red Team "Bullshit Detection"**: kill ideas that are incremental in disguise | Ideate |
+| 4 | **Core Novelty Invariant**: core method cannot be downgraded even if code fails | Build |
+| 5 | **3-Strike Circuit Breaker**: project terminates rather than degrading to ResNet | Build |
+
+</details>
+
+<details>
+<summary><strong>🟡 Anti-Lack-of-Novelty (3 layers)</strong></summary>
+
+| Layer | Mechanism | Stage |
+|-------|-----------|-------|
+| 1 | **Research Frontier Check (QG1)**: scan latest 6-month arXiv for collision | Survey |
+| 2 | **novelty-checker hard threshold**: force `unknown` if < 50 papers scanned | Novelty |
+| 3 | **Novelty Risk Gate (hard checkpoint)**: Autopilot cannot skip when risk is unknown/high | Novelty |
+
+</details>
+
+<details>
+<summary><strong>🟢 Anti-Unprofessional (4 layers)</strong></summary>
+
+| Layer | Mechanism | Stage |
+|-------|-----------|-------|
+| 1 | **Type-aware QG4**: Type B/C experiments not killed by 1% SOTA threshold | Build |
+| 2 | **Multi-seed statistics**: `SEEDS=[13,42,123]` + Cohen's d + Holm-Bonferroni | Build |
+| 3 | **Shadow evidence isolation**: full-chain `publishable` filtering from fetch to manuscript | Write |
+| 4 | **QG5 publication standards**: 14 checks including DPI, colorblind-safe, de-AI phrasing | Write |
+
+</details>
 
 ## 🚀 Quick Start
 
@@ -83,12 +125,8 @@ Then open Antigravity **in the project directory**. Skills, Rules, and Workflows
 <summary><strong>Claude Code</strong></summary>
 
 ```bash
-# Add MCP server
 claude mcp add paper-service python /path/to/NeXus/mcp-servers/paper-service/server.py
-
-# 对于 Claude Code (需要在 NeXus 根目录运行)
-cd NeXus
-claude
+cd NeXus && claude
 ```
 
 Claude Code reads `CLAUDE.md` at project root to discover capabilities.
@@ -107,10 +145,16 @@ Claude Code reads `CLAUDE.md` at project root to discover capabilities.
 ### 4. Start Researching
 
 ```
-你: 帮我调研 graph neural networks for urban computing
+# From scratch
+你: /full-research-pipeline "graph neural networks for urban computing"
+
+# Improve a rejected paper
+你: /revise-paper (attach PDF + reviewer comments)
+
+# Quick one-off tasks
+你: 帮我调研 urban heat island mitigation
 你: 帮我想几个 research idea
 你: 审一下这篇论文，目标 NeurIPS 2026
-你: 写论文草稿
 ```
 
 ## 📦 Project Structure
@@ -118,21 +162,26 @@ Claude Code reads `CLAUDE.md` at project root to discover capabilities.
 ```
 NeXus/
 ├── .agents/
-│   ├── skills/                    # 18 Skills (Markdown instructions for LLM)
-│   │   ├── omni-orchestrator/     # 🎯 Unified entry point + intent routing
+│   ├── skills/                    # 22 Skills (Markdown instructions)
+│   │   ├── omni-orchestrator/     # 🎯 Entry point + intent routing
+│   │   ├── sdp-protocol/         # 🤝 Structured Debate Protocol (cross-model)
 │   │   ├── literature-survey/     # 📚 End-to-end survey pipeline
 │   │   ├── citation-verifier/     # ✅ Multi-source citation verification
-│   │   ├── claim-extractor/       # 📊 Evidence card extraction
+│   │   ├── claim-extractor/       # 📊 Evidence card extraction (with publishable field)
+│   │   ├── evidence-auditor/      # 🔍 Evidence quality audit (QG1)
 │   │   ├── pattern-promoter/      # 🧠 Auto-build Knowledge Graph
+│   │   ├── paper-ingestion/       # 📥 PDF/arXiv ingestion pipeline
 │   │   ├── pdf-to-markdown/       # 📄 PDF parsing (marker-pdf)
-│   │   ├── idea-brainstorm/       # 💡 Gap-driven idea generation
-│   │   ├── novelty-checker/       # 🔍 Prior art risk assessment
-│   │   ├── deep-dive/             # 🔬 In-depth paper analysis
-│   │   ├── paper-writing/         # 📝 Dual-model debate drafting + Overleaf
-│   │   │   └── overleaf_setup.md  # LaTeX/Overleaf integration guide
-│   │   ├── multi-reviewer/        # 👥 Multi-model parallel peer review
+│   │   ├── idea-brainstorm/       # 💡 ToT + Elo + SDP Red Team (QG2)
+│   │   ├── novelty-checker/       # 🔬 4-level risk + coverage threshold
+│   │   ├── deep-dive/             # 📖 In-depth paper analysis
+│   │   ├── paper-writing/         # 📝 SDP debate drafting + LaTeX pipeline
+│   │   │   ├── overleaf_setup.md  # TexLive + LaTeX Workshop + Overleaf Workshop
+│   │   │   └── venue_templates.md # 30+ conference/journal LaTeX templates
+│   │   ├── multi-reviewer/        # 👥 6-reviewer SDP + cross-review (QG5)
 │   │   │   └── venue_rubrics/     # 12 conference/journal rubrics
-│   │   ├── experiment-runner/     # 🧪 Experiment + SSH remote + AutoDL
+│   │   ├── experiment-runner/     # 🧪 Type A/B/C + 3-Strike + multi-seed (QG3/QG4)
+│   │   ├── evolution-memory/      # 🧬 Cross-project learning distillation
 │   │   ├── repo-architecture/     # 🏗️ Module boundary enforcement
 │   │   ├── code-review/           # 🔎 Code review for correctness
 │   │   ├── safe-refactor/         # 🔧 Safe, reviewable refactors
@@ -142,21 +191,22 @@ NeXus/
 │   │
 │   ├── rules/                     # 7 Rules (always-on constraints)
 │   │   ├── citation-integrity.md  # All citations must be verified
-│   │   ├── evidence-discipline.md # All claims need evidence cards
-│   │   ├── access-state-policy.md # Paper access level policies
-│   │   ├── engineering-baseline.md # Small diffs, follow conventions
-│   │   ├── repo-conventions.md    # Python/pytest/ruff/mypy standards
-│   │   ├── verification-policy.md # Every change needs verification evidence
+│   │   ├── evidence-discipline.md # All claims need evidence + publishable=true
+│   │   ├── access-state-policy.md # 7-level access state + Shadow isolation
+│   │   ├── engineering-baseline.md
+│   │   ├── repo-conventions.md
+│   │   ├── verification-policy.md
 │   │   └── model-routing.md       # Multi-model stage recommendation
 │   │
-│   └── workflows/                 # 7 Workflows (orchestration)
-│       ├── full-research-pipeline.md  # Complete research lifecycle
+│   └── workflows/                 # 8 Workflows (orchestration)
+│       ├── full-research-pipeline.md  # 8-stage lifecycle + 5 hard checkpoints
+│       ├── revise-paper.md            # Rejected/draft paper upgrade (A: fix / B: redo)
 │       ├── quick-survey.md            # Rapid survey (1-3 min)
-│       ├── bugfix-safe.md             # Evidence-driven bug fixing
-│       ├── hack.md                    # Fast, low-ceremony implementation
-│       ├── orchestrate-task.md        # Multi-workstream task planning
-│       ├── review-changes.md          # Code change review
-│       └── verify-result.md           # Result verification
+│       ├── bugfix-safe.md
+│       ├── hack.md
+│       ├── orchestrate-task.md
+│       ├── review-changes.md
+│       └── verify-result.md
 │
 ├── mcp-servers/
 │   └── paper-service/             # MCP Server (Python/FastMCP)
@@ -173,13 +223,13 @@ NeXus/
 │       │   └── shadow_library.py  # Sci-Hub/LibGen (configurable)
 │       └── tools/                 # 5 MCP tools
 │           ├── search_papers.py   # Multi-source concurrent search
-│           ├── fetch_paper.py     # 5-tier waterfall fetching
+│           ├── fetch_paper.py     # 5-tier waterfall + publishable tracking
 │           ├── verify_citation.py # Cross-validation + retraction check
 │           ├── get_citations.py   # Citation graph
 │           └── download_pdf.py    # Secure PDF download
 │
 ├── CLAUDE.md                      # Claude Code entry point
-└── README.md                      # This file
+└── README.md
 ```
 
 ## 🔧 MCP Server: paper-service
@@ -202,12 +252,91 @@ NeXus/
 | Tool | Description |
 |------|-------------|
 | `search_papers` | Multi-source concurrent search with dedup |
-| `fetch_paper` | 5-tier waterfall: arXiv → OA → Shadow → Manual → Abstract |
+| `fetch_paper` | 5-tier waterfall: arXiv → OA → Shadow → Manual → Abstract. Tracks `publishable` status |
 | `verify_citation` | Multi-source cross-validation + retraction check |
 | `get_citations` | Reference/citation graph via Semantic Scholar |
 | `download_pdf` | Secure download with path traversal protection |
 
-## 👥 Multi-Reviewer: Venue Rubrics
+## 🔄 Workflows
+
+### Full Research Pipeline (`/full-research-pipeline`)
+
+```
+Stage 1: Survey → 🔒 Scope Freeze → 🔒 Corpus Freeze
+Stage 2: Evidence Audit + Frontier Check (QG1)
+Stage 3: Ideate (ToT + Elo + SDP Red Team QG2) → 🔒 Idea Approval
+Stage 4: Deep Dive + Novelty Check → 🔒 Novelty Risk Gate
+Stage 5: Build (SDP Arch Review → 🔒 Arch Approval → QG3 → 🔒 QG3 Approval → QG4)
+Stage 6: Write (SDP Debate Draft + GPT Polish + QG5 + LaTeX Pipeline)
+Stage 7: Review (6 Reviewers + Cross-Review) → 🔒 Review Arena
+Stage 8: Revise (≤2 rounds) + Evolution Memory
+```
+
+🔒 = Human checkpoint. Five of them are **hard checkpoints** that Autopilot cannot bypass.
+
+### Revise Paper (`/revise-paper`)
+
+For rejected papers, unpublished drafts, or preprints:
+
+```
+Input: paper + [reviewer comments] + [revision ideas]
+  R0: Parse & extract claims
+  R1: Diagnose (6-reviewer audit + novelty re-check + gap analysis)
+  🔒 R2: Triage Decision (Fix vs Redo)
+  → Plan A (Fix): revision plan → supplement experiments → rewrite → re-review
+  → Plan B (Redo): inherit assets → full pipeline from Stage 2
+```
+
+Both paths go through the **same QG1–QG5 quality gates** — no shortcuts.
+
+### Quick Survey (`/quick-survey`)
+```
+Multi-source Search → Smart Filter → 20-30 papers → Brief overview (3-5 min)
+```
+
+## ✍️ LaTeX & Overleaf Integration
+
+| Component | Purpose |
+|-----------|---------|
+| **TexLive** | Local LaTeX compilation engine |
+| **LaTeX Workshop** | VS Code extension: auto-compile on save + PDF preview + SyncTeX |
+| **Overleaf Workshop** | VS Code extension: bidirectional sync with Overleaf cloud |
+| **venue_templates.md** | 30+ conference/journal template registry with auto-download |
+
+Auto-detection at write time: the agent checks your environment and only installs what's missing.
+
+## 🤖 Autopilot Mode
+
+Say **"autopilot"**, **"自动完成"**, or **"vibe research"** at any stage:
+
+```
+你: /full-research-pipeline "urban computing"
+AI: [Survey done, waiting for Scope Freeze...]
+你: autopilot
+AI: ✅ Autopilot ON. Regular checkpoints auto-approved.
+    Hard checkpoints still require your confirmation.
+```
+
+**Three-branch behavior:**
+- `autopilot + regular checkpoint` → auto-approve with 1-2 line summary
+- `autopilot + hard checkpoint` → show details, wait for user (cannot skip)
+- `manual mode` → show details, wait for user at every checkpoint
+
+**5 hard checkpoints** (Autopilot never skips):
+1. Idea Approval
+2. Novelty Risk Gate (`overall_risk: unknown/high`)
+3. Architecture Approval
+4. QG3 Experimental Design
+5. Review Arena
+
+**Auto-stop conditions:**
+- Review-Revise loop > 2 rounds
+- Score stagnates (delta < 0.5 for 2 consecutive rounds)
+- Retracted citation detected
+- 3 consecutive API failures
+- Core Novelty Invariant 3-Strike breaker
+
+## 👥 Multi-Reviewer Venue Rubrics
 
 12 review rubrics covering AI/ML conferences and cross-domain journals:
 
@@ -218,7 +347,7 @@ NeXus/
 | **Biology** | PNAS, eLife, Cell Reports | Biological replicates, Statistics |
 | **Physics** | PRL, PRX, ApJ | Error analysis, Dimensional consistency |
 | **Earth Science** | GRL, JGR, ERL | Data quality, Model validation |
-| **Architecture/Urban** | Nature Cities, Landscape & Urban Planning, Cities | Practical relevance, Visual quality |
+| **Architecture/Urban** | Nature Cities, L&UP, Cities | Practical relevance, Visual quality |
 | **Generic** | Any venue | Balanced default weights |
 
 ## ⚙️ Configuration
@@ -239,61 +368,35 @@ First-run setup creates `~/.nexus/global_config.json`:
 - **semantic_scholar_key**: [Free API key](https://www.semanticscholar.org/product/api#api-key) to avoid rate limits
 - **shadow_library_enabled**: Enable Sci-Hub/LibGen (user responsibility)
 
-## 🔄 Workflows
-
-### Full Research Pipeline (`/full-research-pipeline`)
-```
-Survey → Scope Freeze → Corpus Freeze → Evidence Extraction →
-Idea Brainstorm → Idea Approval → Novelty Check → Review Arena →
-Paper Writing → Multi-Review → Revision
-```
-
-### Quick Survey (`/quick-survey`)
-```
-Multi-source Search → Smart Filter (citations + recency + novelty) →
-20-30 papers → Brief overview (3-5 minutes)
-```
-
-### 🤖 Autopilot Mode
-
-Say **"autopilot"**, **"自动完成"**, or **"vibe research"** at any stage:
-
-```
-你: 帮我调研 urban computing
-AI: [Survey 完成，等待 Scope Freeze...]
-你: autopilot
-AI: ✅ Autopilot ON. 后续卡点自动通过，随时说"暂停"恢复手动。
-    [自动继续 → Corpus Freeze → Ideate → Novelty Check → Write → Review...]
-```
-
-- All checkpoints auto-approve with brief summaries
-- Safety guardrails: file deletion, git ops, bulk API calls still require confirmation
-- Auto-stops after 2 review-revise rounds or if scores plateau
-
-
-
 ## 🔒 Privacy & Security
 
 > [!IMPORTANT]
-> NeXus 是纯本地的 agent skill pack，**不收集任何数据**。但使用过程中会与外部服务交互，请注意以下事项。
+> NeXus is a fully local agent skill pack. **It does not collect any data.** But it interacts with external services during use — see below.
 
-**数据流透明度**：
+**Data flow transparency:**
 
-| 数据 | 发送到哪里 | 目的 |
-|------|----------|------|
-| 论文搜索查询 | Semantic Scholar, arXiv, OpenAlex, CrossRef | 文献检索 |
-| 邮箱（可选） | Unpaywall API `mailto` 参数 | 提高 API 配额 |
-| 论文草稿/idea | 你使用的 LLM 提供商（OpenAI, Anthropic, Google 等） | 写作/审稿 |
-| SSH 连接信息 | 存储在本地 `~/.nexus/global_config.json` | 远程实验 |
+| Data | Sent to | Purpose |
+|------|---------|---------|
+| Search queries | Semantic Scholar, arXiv, OpenAlex, CrossRef | Literature retrieval |
+| Email (optional) | Unpaywall API `mailto` | Higher API quota |
+| Paper drafts / ideas | Your LLM provider (Google, Anthropic, OpenAI, etc.) | Writing / review |
+| SSH info | Stored locally in `~/.nexus/global_config.json` | Remote experiments |
 
-**凭据安全**：
-- `global_config.json` 以**明文**存储 API Key 和 SSH 信息，已加入 `.gitignore`
-- Overleaf Cookie 等价于登录凭证，**请勿粘贴到聊天窗口**，仅在 VS Code 插件中使用
-- 未发表的研究 idea（`hypothesis_board.json`）和论文草稿会发送到 LLM API，请确认你的 LLM 提供商数据政策
+**What stays local:**
+- All project data: `evidence_graph.json`, `hypothesis_board.json`, `corpus_ledger.json`
+- Experiment code and results
+- All dialogue/handoff files (`dialogue/*.md`)
+- `project_state.json` and revision history
 
-**Shadow Library**：
-- Sci-Hub / LibGen 访问功能**默认关闭**（`shadow_library_enabled: false`）
-- 在部分地区使用可能涉及法律风险，请自行评估合规性后再开启
+**Credentials:**
+- `global_config.json` stores API keys in **plaintext** (`.gitignore`'d)
+- Overleaf Cookie = login credential — **never paste into chat**, only into VS Code plugin
+- Unpublished ideas sent to LLM APIs — check your provider's data policy
+
+**Shadow Library:**
+- Sci-Hub / LibGen access **disabled by default** (`shadow_library_enabled: false`)
+- May have legal implications in some jurisdictions — enable at your own risk
+- Even when enabled, shadow-sourced evidence is **automatically excluded** from final manuscripts (`publishable: false`)
 
 ## 📄 License
 
