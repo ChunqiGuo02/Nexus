@@ -20,6 +20,30 @@ description: SDP 双模型 6 审稿人 + 交叉审核系统。含拒稿信预演
 
 > 目的：在别人攻击你之前，先自我攻击。提前暴露弱点并修复。
 
+## Step 0.3: Context Isolation 硬规则 ⚠️
+
+串行执行多个 reviewer 时，**必须**遵循以下规则防止意见趋同：
+
+### 规则 1: 输出文件隔离
+- 执行 Reviewer B 时，**禁止读取** `review_A.json`
+- 执行 Reviewer C 时，**禁止读取** `review_A.json` 和 `review_B.json`
+- 每个 reviewer 独立输出到 `dialogue/review_{id}.json`
+
+### 规则 2: 差异化专业侧重
+每个 reviewer 做**全面审稿**，但各有一个更高标准的维度：
+- Reviewer A/D: 方法论严谨性（理论推导、公式正确性、假设合理性）
+- Reviewer B/E: 实验充分性（baseline 完整、ablation、统计显著性）
+- Reviewer C/F: 写作清晰度 + Novelty（表述质量、创新性论证）
+
+### 规则 3: 反遗忘声明
+每个 reviewer 的 prompt 必须包含：
+> "忽略你此前在其他角色中看到或产生的任何审稿意见。你是一个全新的独立审稿人，从零开始形成自己的判断。"
+
+### 双窗口执行
+- 窗口 1 (Antigravity/Opus): Reviewer A → B → C（串行 + 上述规则）
+- 窗口 2 (Codex/GPT): Reviewer D → E → F（读取 `sdp_handoff.json`）
+- 两窗口**同时启动** → 物理隔离 + 跨模型多样性
+
 ## Step 0.5: Domain-Calibrated Reviewer Generation (v2.1)
 
 **不使用通用 persona，而是根据论文 topic 动态生成领域专家 reviewer。**

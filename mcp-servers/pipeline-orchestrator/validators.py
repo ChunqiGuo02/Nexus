@@ -467,11 +467,65 @@ def validate_writing(project_dir: str) -> list[str]:
 
 
 def validate_review_round1(project_dir: str) -> list[str]:
-    """review_round1: round1 审稿报告存在。"""
+    """review_round1: round1 审稿报告存在 + 趋同检测。"""
     missing = []
     data = _load_json(project_dir, "artifacts/review_round1.json")
     if data is None:
         missing.append("artifacts/review_round1.json 不存在或格式错误")
+        return missing
+
+    # 趋同检测
+    reviews = data.get("reviews", [])
+    if len(reviews) >= 3:
+        # 提取各 reviewer 的 weakness 关键词
+        all_weaknesses: list[set[str]] = []
+        all_scores: list[float] = []
+
+        for r in reviews:
+            wks = set()
+            for w in r.get("weaknesses", []):
+                text = w if isinstance(w, str) else w.get("text", "")
+                # 提取关键词（简化：取所有 > 3 字符的单词）
+                words = {
+                    word.lower()
+                    for word in text.split()
+                    if len(word) > 3
+                }
+                wks.update(words)
+            all_weaknesses.append(wks)
+
+            score = r.get("overall_score", r.get("score", 0))
+            if isinstance(score, (int, float)):
+                all_scores.append(float(score))
+
+        # 检查 weakness 重合率
+        if len(all_weaknesses) >= 2:
+            pairs_overlap: list[float] = []
+            for i in range(len(all_weaknesses)):
+                for j in range(i + 1, len(all_weaknesses)):
+                    a, b = all_weaknesses[i], all_weaknesses[j]
+                    if a and b:
+                        overlap = len(a & b) / min(len(a), len(b))
+                        pairs_overlap.append(overlap)
+            if pairs_overlap:
+                avg_overlap = sum(pairs_overlap) / len(pairs_overlap)
+                if avg_overlap > 0.7:
+                    missing.append(
+                        f"⚠️ 审稿意见趋同警告: weakness 平均重合率"
+                        f" {avg_overlap:.0%} > 70%。"
+                        f"建议用独立模型补充审稿"
+                    )
+
+        # 检查评分一致性
+        if len(all_scores) >= 3:
+            import statistics
+            score_std = statistics.stdev(all_scores)
+            if score_std < 0.5:
+                missing.append(
+                    f"⚠️ 审稿评分趋同警告: score std={score_std:.2f}"
+                    f" < 0.5。多个 reviewer 给出几乎相同分数"
+                )
+
     return missing
 
 
