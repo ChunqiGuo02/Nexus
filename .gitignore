@@ -62,3 +62,19 @@ bib/
 artifacts/draft*.tex
 artifacts/review_report.json
 artifacts/story_skeleton.json
+
+# === Pipeline runtime data ===
+corpus_ledger.json
+corpus_list.txt
+evidence_graph.json
+evidence_audit.md
+hypothesis_board.json
+project_state.json
+experimental_design.md
+papers/
+raw_pdfs/
+parsed_mds/
+dialogue/
+artifacts/
+experiments/
+
